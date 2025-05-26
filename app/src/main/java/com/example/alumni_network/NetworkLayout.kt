@@ -19,11 +19,13 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.example.alumni_network.databinding.ActivityNetworkLayoutBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class NetworkLayout : AppCompatActivity() {
     private lateinit var binding: ActivityNetworkLayoutBinding
     private lateinit var firestore: FirebaseFirestore
+    private lateinit var mAuth: FirebaseAuth
     private var selectedCategory: TextView? = null
     private lateinit var viewPager2: ViewPager2
     private lateinit var handler: Handler
@@ -34,17 +36,25 @@ class NetworkLayout : AppCompatActivity() {
     ).apply {
         setMargins(8, 0, 8, 0)
     }
+    private lateinit var networkIdmsg: String
+    private lateinit var networkLogoMsg: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNetworkLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        firestore = FirebaseFirestore.getInstance()
+        mAuth = FirebaseAuth.getInstance()
+
+        // Get network ID from intent
+        networkIdmsg = intent.getStringExtra("networkId").toString()
+        networkLogoMsg = intent.getStringExtra("networklogo").toString()
+
+        // Check user permissions for posting
+        checkPostingPermissions()
 
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbarnetwork)
         setSupportActionBar(toolbar)
-
-        val networkIdmsg = intent.getStringExtra("networkId").toString()
-        val networkLogoMsg = intent.getStringExtra("networkLogo")
 
         viewPager2 = findViewById(R.id.viewpager2)
         val tabLayout: LinearLayout = findViewById(R.id.slideDotLL)
@@ -53,7 +63,6 @@ class NetworkLayout : AppCompatActivity() {
         supportActionBar?.title = "Network"
         supportActionBar?.setDisplayHomeAsUpEnabled(true) // Enables back button
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        firestore = FirebaseFirestore.getInstance()
 
         // Auto-scroll handler
         handler = Handler(Looper.getMainLooper())
@@ -136,6 +145,34 @@ class NetworkLayout : AppCompatActivity() {
         binding.internships.setOnClickListener { setSelectedCategory(binding.internships); replaceFragment(Internships(), bundle) }
         binding.networkChat.setOnClickListener { replaceFragment1(NetworkChats(), bundle) }
         binding.Allposts.setOnClickListener { setSelectedCategory(binding.Allposts); replaceFragment(AllPosts(), bundle) }
+    }
+
+    private fun checkPostingPermissions() {
+        val userId = mAuth.currentUser?.uid.toString()
+        
+        firestore.collection("networks")
+            .document(networkIdmsg)
+            .collection("networkusers")
+            .document(userId)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val associateType = document.getString("associateType")
+                    // Only show post internship button for Alumni and Faculty
+                    binding.postInternship.visibility = if (associateType == "Alumni" || associateType == "Faculty") {
+                        View.VISIBLE
+                    } else {
+                        View.GONE
+                    }
+                } else {
+                    // Hide post buttons for non-members
+                    binding.postInternship.visibility = View.GONE
+                }
+            }
+            .addOnFailureListener {
+                // Hide on error
+                binding.postInternship.visibility = View.GONE
+            }
     }
 
     private fun setSelectedCategory(newSelected: TextView?) {

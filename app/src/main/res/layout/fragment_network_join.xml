@@ -19,6 +19,16 @@
             android:inputType="text"
             app:iconifiedByDefault="false" />
 
+        <Button
+            android:id="@+id/createDemoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Demo Network"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/navcolor"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerviewforsearch"
             android:layout_width="match_parent"

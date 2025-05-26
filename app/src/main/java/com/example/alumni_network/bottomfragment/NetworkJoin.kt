@@ -20,6 +20,7 @@ import androidx.appcompat.widget.SearchView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Locale
+import com.example.alumni_network.utils.DemoNetworkCreator
 
 
 class NetworkJoin : Fragment() {
@@ -28,6 +29,7 @@ class NetworkJoin : Fragment() {
     private  var mList=ArrayList<LanguageData>()
     private lateinit var adapter:LanguageAdapter
     private lateinit var finalNewtorkJoinButton:Button
+    private lateinit var createDemoButton: Button
     private lateinit var firestore:FirebaseFirestore
     private lateinit var mAuth:FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +52,7 @@ class NetworkJoin : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         finalNewtorkJoinButton=view.findViewById<Button>(R.id.finalNetworkJoinButton)
+        createDemoButton = view.findViewById(R.id.createDemoButton)
         recyclerView=view.findViewById(R.id.recyclerviewforsearch)
         searchView=view.findViewById(R.id.searchfornetwork)
         recyclerView.setHasFixedSize(true)
@@ -92,6 +95,30 @@ class NetworkJoin : Fragment() {
             specificNetworkJoinFragment.arguments = bundle
             replaceFragment(specificNetworkJoinFragment)
             activity?.title="Network"
+        }
+
+        // Create demo network button
+        createDemoButton.setOnClickListener {
+            createDemoButton.isEnabled = false
+            createDemoButton.text = "Creating..."
+            
+            DemoNetworkCreator.createDemoNetwork(
+                onSuccess = {
+                    context?.let { ctx ->
+                        Toast.makeText(ctx, "Demo network created! Search for 'Demo Alumni Network'", Toast.LENGTH_LONG).show()
+                        addDataToList() // Refresh the network list
+                        createDemoButton.isEnabled = true
+                        createDemoButton.text = "Create Demo Network"
+                    }
+                },
+                onError = { e ->
+                    context?.let { ctx ->
+                        Toast.makeText(ctx, "Error creating network: ${e.message}", Toast.LENGTH_SHORT).show()
+                        createDemoButton.isEnabled = true
+                        createDemoButton.text = "Create Demo Network"
+                    }
+                }
+            )
         }
 
     }

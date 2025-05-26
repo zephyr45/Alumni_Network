@@ -1,6 +1,5 @@
 package com.example.alumni_network
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -29,18 +28,30 @@ class Login : AppCompatActivity() {
         private const val RC_SIGN_IN = 9001
     }
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var firebaseAuth:FirebaseAuth
-
-
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        firebaseAuth=FirebaseAuth.getInstance()
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        enableEdgeToEdge()
+        setContentView(binding.root)
+        
+        firebaseAuth = FirebaseAuth.getInstance()
+
+        var signupvar = findViewById<TextView>(R.id.signup)
+        var loginvar = findViewById<TextView>(R.id.login)
+        var signuplay = findViewById<LinearLayout>(R.id.signuplayout)
+        var loginlay = findViewById<LinearLayout>(R.id.loginlayout)
+        var loginbutton = findViewById<Button>(R.id.loginbutton)
+        var msg = "loging"
+        val forgotPass = findViewById<TextView>(R.id.forgot_pass)
+
+        // Check if user is already logged in
         if (firebaseAuth.currentUser != null) {
             val userId = firebaseAuth.currentUser?.uid
             val sharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE)
             val userExists = sharedPreferences.getBoolean("userExists", false)
+            
             if (userExists) {
                 navigateToHomePage()
             } else {
@@ -56,55 +67,44 @@ class Login : AppCompatActivity() {
                     }
                 }
             }
+            return
         }
-        binding=ActivityLoginBinding.inflate(layoutInflater)
-        enableEdgeToEdge()
-        setContentView(binding.root)
 
-        var signupvar=findViewById<TextView>(R.id.signup)
-        var loginvar=findViewById<TextView>(R.id.login)
-        var signuplay=findViewById<LinearLayout>(R.id.signuplayout)
-        var loginlay=findViewById<LinearLayout>(R.id.loginlayout)
-        var loginbutton=findViewById<Button>(R.id.loginbutton)
-        var msg="loging";
-        val forgotPass=findViewById<TextView>(R.id.forgot_pass)
         binding.loginbutton.setOnClickListener {
             if (msg == "signing") {
                 signingWithEmail()
-
             } else if (msg == "loging") {
                 logingWithEmail()
             }
         }
-        signupvar.setOnClickListener{
-            signupvar.background=resources.getDrawable(R.drawable.switch_trcks,null)
-            signupvar.setTextColor(resources.getColor(R.color.textColor,null))
-            loginvar.background=null;
-            signuplay.visibility= View.VISIBLE
-            loginlay.visibility=View.GONE
-            loginvar.setTextColor(resources.getColor(R.color.darkblueColor,null))
-            loginbutton.text="Sign Up"
-            msg="signing"
-        }
-        loginvar.setOnClickListener{
-            loginvar.background=resources.getDrawable(R.drawable.switch_trcks,null)
-            loginvar.setTextColor(resources.getColor(R.color.textColor,null))
-            signupvar.background=null;
-            loginlay.visibility= View.VISIBLE
-            signuplay.visibility=View.GONE
-            signupvar.setTextColor(resources.getColor(R.color.darkblueColor,null))
-            loginbutton.text="Log In"
-            msg="loging"
+
+        signupvar.setOnClickListener {
+            signupvar.background = resources.getDrawable(R.drawable.switch_trcks, null)
+            signupvar.setTextColor(resources.getColor(R.color.textColor, null))
+            loginvar.background = null
+            signuplay.visibility = View.VISIBLE
+            loginlay.visibility = View.GONE
+            loginvar.setTextColor(resources.getColor(R.color.darkblueColor, null))
+            loginbutton.text = "Sign Up"
+            msg = "signing"
         }
 
+        loginvar.setOnClickListener {
+            loginvar.background = resources.getDrawable(R.drawable.switch_trcks, null)
+            loginvar.setTextColor(resources.getColor(R.color.textColor, null))
+            signupvar.background = null
+            loginlay.visibility = View.VISIBLE
+            signuplay.visibility = View.GONE
+            signupvar.setTextColor(resources.getColor(R.color.darkblueColor, null))
+            loginbutton.text = "Log In"
+            msg = "loging"
+        }
 
         //google button login
-        val GooglesignInButton=findViewById<LinearLayout>(R.id.google_btn)
-        GooglesignInButton.setOnClickListener{
+        val GooglesignInButton = findViewById<LinearLayout>(R.id.google_btn)
+        GooglesignInButton.setOnClickListener {
             signIn()
-
         }
-
 
         //forgetting password
         forgotPass.setOnClickListener {
@@ -114,12 +114,6 @@ class Login : AppCompatActivity() {
                 Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
-
-
-
-
-
-
     }
 
     private fun logingWithEmail() {

@@ -17,13 +17,13 @@ class PostInternships : Fragment() {
     private var _binding: FragmentPostInternshipsBinding? = null
     private val binding get() = _binding!!
     private lateinit var networkId: String
-    private lateinit var mAuth:FirebaseAuth
-    private lateinit var userName:String
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var userName: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         firestore = FirebaseFirestore.getInstance()
-        mAuth=FirebaseAuth.getInstance()
+        mAuth = FirebaseAuth.getInstance()
     }
 
     override fun onCreateView(
@@ -37,7 +37,15 @@ class PostInternships : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as? AppCompatActivity)?.supportActionBar?.title = "Post Internships"
-        networkId = arguments?.getString("networkId").toString()
+        
+        // Safely get networkId from arguments with a default value
+        networkId = arguments?.getString("networkId") ?: ""
+        if (networkId.isEmpty()) {
+            Toast.makeText(requireContext(), "Error: Network ID not found", Toast.LENGTH_SHORT).show()
+            requireActivity().supportFragmentManager.popBackStack()
+            return
+        }
+
         binding.ButtonForInternship.setOnClickListener {
             if (validateFields()) {
                 uploadInternshipDetails()
@@ -86,48 +94,66 @@ class PostInternships : Fragment() {
     }
 
     private fun uploadInternshipDetails() {
-        val userId = mAuth.currentUser?.uid.toString()
+        val userId = mAuth.currentUser?.uid
+        if (userId == null) {
+            Toast.makeText(requireContext(), "Error: User not logged in", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-        // Fetch user's first and last name
+        // Show loading state
+        binding.ButtonForInternship.isEnabled = false
+        binding.ButtonForInternship.text = "Posting..."
+
+        // Create internship details with default username if user details fetch fails
+        fun postInternshipWithDetails(posterName: String) {
+            val internshipDetails = hashMapOf(
+                "companyName" to binding.companyNameForInternship.text.toString().trim(),
+                "jobTitle" to binding.JobtitleforInternship.text.toString().trim(),
+                "duration" to binding.DurationForInternship.text.toString().trim(),
+                "stipend" to binding.StipendforInternship.text.toString().trim(),
+                "location" to binding.locationforInternships.text.toString().trim(),
+                "applyLink" to binding.ContactEmailforInternship.text.toString().trim(),
+                "description" to binding.InternshipDescriptionForInternship.text.toString().trim(),
+                "senderName" to posterName,
+                "senderId" to userId,
+                "timeStamp" to FieldValue.serverTimestamp(),
+                "likes" to emptyList<String>(),
+                "noOfLikes" to 0
+            )
+
+            firestore.collection("networks")
+                .document(networkId)
+                .collection("internships")
+                .add(internshipDetails)
+                .addOnSuccessListener {
+                    Toast.makeText(requireContext(), "Internship posted successfully!", Toast.LENGTH_SHORT).show()
+                    clearFields()
+                    requireActivity().supportFragmentManager.popBackStack()
+                }
+                .addOnFailureListener { e ->
+                    binding.ButtonForInternship.isEnabled = true
+                    binding.ButtonForInternship.text = "Post Internship"
+                    Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+        }
+
+        // Try to fetch user details, but proceed with posting even if it fails
         firestore.collection("users").document(userId).get()
             .addOnSuccessListener { document ->
-                val firstName = document.getString("firstName").orEmpty()
-                val lastName = document.getString("lastName").orEmpty()
-                userName = "$firstName $lastName"
-
-                // Proceed to post the internship after fetching the username
-                val internshipDetails = mapOf(
-                    "companyName" to binding.companyNameForInternship.text.toString().trim(),
-                    "jobTitle" to binding.JobtitleforInternship.text.toString().trim(),
-                    "duration" to binding.DurationForInternship.text.toString().trim(),
-                    "stipend" to binding.StipendforInternship.text.toString().trim(),
-                    "location" to binding.locationforInternships.text.toString().trim(),
-                    "applyLink" to binding.ContactEmailforInternship.text.toString().trim(),
-                    "description" to binding.InternshipDescriptionForInternship.text.toString().trim(),
-                    "senderName" to userName, // Use the fetched username
-                    "likes" to emptyList<String>(),
-                    "comments" to emptyList<Map<String, String>>(),
-                    "timeStamp" to FieldValue.serverTimestamp(),
-                    "senderId" to userId,
-                )
-
-                firestore.collection("networks")
-                    .document(networkId)
-                    .collection("internships")
-                    .add(internshipDetails)
-                    .addOnSuccessListener {
-                        Toast.makeText(requireContext(), "Internship posted successfully!", Toast.LENGTH_SHORT).show()
-                        clearFields()
-                    }
-                    .addOnFailureListener { e ->
-                        Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-                    }
+                val firstName = document.getString("firstName") ?: ""
+                val lastName = document.getString("lastName") ?: ""
+                val userName = if (firstName.isEmpty() && lastName.isEmpty()) {
+                    "Anonymous User"
+                } else {
+                    "$firstName $lastName".trim()
+                }
+                postInternshipWithDetails(userName)
             }
-            .addOnFailureListener { e ->
-                Toast.makeText(requireContext(), "Failed to fetch user details: ${e.message}", Toast.LENGTH_SHORT).show()
+            .addOnFailureListener {
+                // If we can't get the user's name, post with a default name
+                postInternshipWithDetails("Anonymous User")
             }
     }
-
 
     private fun clearFields() {
         binding.companyNameForInternship.text?.clear()
