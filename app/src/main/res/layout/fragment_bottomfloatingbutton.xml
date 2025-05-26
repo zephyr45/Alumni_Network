@@ -1,0 +1,125 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="16dp">
+    <TextView
+        android:id="@+id/joinOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Join a New Network"
+        android:textStyle="bold"
+        android:textColor="@color/navcolor"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"
+        android:background="@color/lightgrey"
+        android:padding="12dp"
+        android:clickable="true"
+        android:focusable="true"/>
+
+    <LinearLayout
+        android:id="@+id/joiningLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Networks"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:padding="4dp"
+            android:layout_marginStart="5dp"
+            android:fontFamily="sans-serif-black">
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello!!"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:padding="5dp"></TextView>
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="loading"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:padding="5dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Join your Alumni Network"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:padding="5dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="Leverage the power of your Alumni,"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/darkgrey"
+            android:padding="1dp"
+            android:justificationMode="inter_word"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="Tap below to search for your network."
+            android:layout_gravity="center"
+            android:textColor="@color/darkgrey"
+            android:textStyle="bold"
+            android:padding="1dp"
+            android:justificationMode="inter_word"></TextView>
+        <Button
+            android:id="@+id/joinNetworkButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:text="Join Network"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/navcolor"
+            android:textStyle="bold"></Button>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="Happy Reunion :)"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/darkgrey"
+            android:padding="3dp"
+            android:justificationMode="inter_word"></TextView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/network"
+            android:layout_gravity="center"></ImageView>
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

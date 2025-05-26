@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NetworkChats">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerForNetworkChats"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/messageInputLayout"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:clipToPadding="false"
+        android:scrollbars="none"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp" />
+
+    <LinearLayout
+        android:id="@+id/messageInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- EditText for typing a message -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp"
+            android:elevation="5dp">
+
+
+            <EditText
+                android:id="@+id/chatmessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:maxHeight="100dp"
+                android:padding="8dp"
+                android:hint="Type a message.." />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- ImageView for send button -->
+
+        <ImageView
+            android:id="@+id/chatsendbutton"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/send_24"
+            android:layout_marginStart="5dp"
+            app:tint="@color/lavender" />
+    </LinearLayout>
+
+</RelativeLayout>

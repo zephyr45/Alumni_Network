@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".bottomfragment.SpecificNetworkJoin">
+
+    <TextView
+        android:id="@+id/AlumniTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="B.M.S College of Engineering"
+        android:textSize="22sp"
+        android:textStyle="bold|normal"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"></TextView>
+    <TextView
+        android:id="@+id/AlumniAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Benaglore,Karnataka"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:textStyle="bold"></TextView>
+
+
+    <LinearLayout
+        android:id="@+id/associateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="Tell us how you're associated with us?"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"></TextView>
+
+        <TextView
+            android:id="@+id/AlumniSelect"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="Alumni"
+            android:background="@drawable/borderforbutton"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textColor="@color/navcolor"
+            android:textStyle="bold"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="15dp"></TextView>
+        <TextView
+            android:id="@+id/StudentSelect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="Student"
+            android:background="@drawable/borderforbutton"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textColor="@color/navcolor"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="15dp"></TextView>
+        <TextView
+            android:id="@+id/FacultySelect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="Faculty"
+            android:background="@drawable/borderforbutton"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textColor="@color/navcolor"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="15dp"></TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/CourseLayout"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:boxStrokeColor="@color/navcolor"
+            app:boxStrokeWidthFocused="2dp"
+            app:hintTextColor="@color/black"
+            app:placeholderText="Select Graduation Year"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp">
+            <Spinner
+                android:id="@+id/GraduationYearSelection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:hint="Graduation Year*"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="12dp"
+
+                android:paddingBottom="12dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/darkgreyColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:boxStrokeColor="@color/navcolor"
+            app:boxStrokeWidthFocused="2dp"
+            app:hintTextColor="@color/black"
+            app:placeholderText="Select course/degree"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/courseSelection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Course/degree*"
+                android:paddingStart="16dp"
+
+                android:paddingEnd="16dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/darkgreyColor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/SubmitLayout"
+        android:visibility="gone"
+        >
+
+        <Button
+            android:clickable="false"
+            android:enabled="false"
+            android:id="@+id/sumbitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/navcolor"></Button>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/network"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"></ImageView>
+
+
+
+
+
+</LinearLayout>

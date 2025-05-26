@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Alumni Network</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="default_web_client_id" translatable="false">361830042981-moqh8b0udek588le9p51ne573gh8s2it.apps.googleusercontent.com</string>
+
+
+    <string name="subjectemailforsignup"> Welcome to Alumni Network! Thank You for Signing Up</string>
+    <string name="emailmessageforsignup">Hi,\n
+        Thank you for joining the Alumni Network! We are thrilled to have you as part of our community,where you can connect with fellow alumni, share experiences, and explore new opportunities.\nBy joining, you now have access to:\nA growing network: Connect with alumni from various fields and build meaningful relationships.\nExclusive resources: Find career guidance, attend alumni events, and access mentorship opportunities.\nNews and updates: Stay informed about the latest from [University/Institution Name] and the achievements of our alumni community.\nIf you have any questions or need support navigating the platform, feel free to reach out to us at gouravagarwal014@gmail.com. We’re here to help!\nWarm regards,\nGourav\nCEO
+  </string>
+    <string name="messageforlogin">Welcome back! Log in to stay connected with your alumni community and explore new opportunities.\nWarm Regards,\nGourav\nCEO</string>
+    <string name="subjectforlogin">WelcomeBack to Alumni Network!</string>
+
+    <string name="profliemessage">"Please fill in your Personal Details &amp; Create Account."</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navigation_drawer_open">open Drawer</string>
+    <string name="navigation_drawer_close">Close Drawer</string>
+
+
+</resources>

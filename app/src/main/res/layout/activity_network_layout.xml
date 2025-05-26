@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".NetworkLayout">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarnetwork"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lavender"
+        app:titleTextColor="@color/white"/>
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/fullContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+                    <LinearLayout
+                        android:id="@+id/informationCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal">
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/networklogo"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_margin="10dp"
+                                app:shapeAppearance="@dimen/cardview_default_elevation">
+                            </com.google.android.material.imageview.ShapeableImageView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:id="@+id/networkTitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:text="B.M.S College of Engineering"
+                                    android:textSize="18sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:textStyle="bold|normal"
+                                    android:layout_marginTop="5dp"
+                                    android:fontFamily="sans-serif-black"></TextView>
+                                <TextView
+                                    android:id="@+id/networkAddress"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:text="Bangalore,Karnataka"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:padding="0dp"></TextView>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <androidx.viewpager2.widget.ViewPager2
+                            android:layout_width="match_parent"
+                            android:layout_height="240dp"
+                            android:id="@+id/viewpager2" />
+                        <LinearLayout
+                            android:id="@+id/slideDotLL"
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginTop="8dp">
+                        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+                    </LinearLayout>
+
+           <LinearLayout
+               android:id="@+id/mainContent"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:textSize="16sp"
+                   android:text="What would you like to do?"
+                   android:layout_gravity="center"
+                   android:gravity="center"
+                   android:layout_marginTop="10dp"
+                   android:textColor="@color/black"></TextView>
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="5dp"
+                   android:layout_marginEnd="5dp"
+                   android:orientation="horizontal">
+                   <com.google.android.material.card.MaterialCardView
+                       android:id="@+id/postDiscussions"
+                       android:layout_width="0dp"
+                       android:layout_weight="1"
+                       android:layout_margin="5dp"
+                       android:layout_height="75dp"
+                       app:cardCornerRadius="5dp"
+                       android:elevation="5dp"
+                       app:cardBackgroundColor="@color/white">
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="10dp"
+                           android:orientation="vertical">
+                           <ImageView
+                               android:layout_width="30dp"
+                               android:layout_height="30dp"
+                               android:src="@drawable/postdiscussion"
+                               android:scaleType="centerCrop"
+                               android:layout_gravity="center"
+                               app:strokeColor="@color/white"
+                               android:layout_centerHorizontal="true"></ImageView>
+
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="Post Discussion"
+                               android:textSize="8sp"
+                               android:layout_gravity="center"
+                               android:layout_marginTop="3dp"
+                               android:gravity="center"
+                               android:textStyle="bold"></TextView>
+
+                       </LinearLayout>
+                   </com.google.android.material.card.MaterialCardView>
+                   <com.google.android.material.card.MaterialCardView
+                       android:id="@+id/postJob"
+                       android:layout_width="0dp"
+                       android:layout_weight="1"
+                       android:layout_margin="5dp"
+                       android:layout_height="75dp"
+                       app:cardCornerRadius="5dp"
+                       android:elevation="5dp"
+                       app:cardBackgroundColor="@color/white">
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="10dp"
+                           android:orientation="vertical">
+                           <ImageView
+                               android:layout_width="30dp"
+                               android:layout_height="30dp"
+                               android:src="@drawable/postjob"
+                               android:scaleType="centerCrop"
+                               android:layout_gravity="center"
+                               app:strokeColor="@color/white"
+                               android:layout_centerHorizontal="true"></ImageView>
+
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="Post Job"
+                               android:textSize="8sp"
+                               android:layout_gravity="center"
+                               android:layout_marginTop="3dp"
+                               android:gravity="center"
+                               android:textStyle="bold"></TextView>
+
+                       </LinearLayout>
+                   </com.google.android.material.card.MaterialCardView>
+                   <com.google.android.material.card.MaterialCardView
+                       android:id="@+id/postInternship"
+                       android:layout_width="0dp"
+                       android:layout_weight="1"
+                       android:layout_margin="5dp"
+                       android:layout_height="75dp"
+                       app:cardCornerRadius="5dp"
+                       android:elevation="5dp"
+                       app:cardBackgroundColor="@color/white">
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="10dp"
+                           android:orientation="vertical">
+                           <ImageView
+                               android:layout_width="30dp"
+                               android:layout_height="30dp"
+                               android:src="@drawable/postinternship"
+                               android:scaleType="centerCrop"
+                               android:layout_gravity="center"
+                               app:strokeColor="@color/white"
+                               android:layout_centerHorizontal="true"></ImageView>
+
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="Post Internship"
+                               android:layout_marginTop="3dp"
+                               android:textSize="8sp"
+                               android:layout_gravity="center"
+                               android:gravity="center"
+                               android:textStyle="bold"></TextView>
+
+                       </LinearLayout>
+                   </com.google.android.material.card.MaterialCardView>
+                   <com.google.android.material.card.MaterialCardView
+                       android:id="@+id/Membershiplogin"
+                       android:layout_width="0dp"
+                       android:layout_weight="1"
+                       android:layout_margin="5dp"
+                       android:layout_height="75dp"
+                       app:cardCornerRadius="5dp"
+                       android:elevation="5dp"
+                       app:cardBackgroundColor="@color/white">
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="10dp"
+                           android:orientation="vertical">
+                           <ImageView
+                               android:layout_width="30dp"
+                               android:layout_height="30dp"
+                               android:src="@drawable/membershipcard"
+                               android:scaleType="centerCrop"
+                               android:layout_gravity="center"
+                               app:strokeColor="@color/white"
+                               android:layout_centerHorizontal="true"></ImageView>
+
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="Membership"
+                               android:textSize="8sp"
+                               android:layout_gravity="center"
+                               android:gravity="center"
+                               android:layout_marginTop="3dp"
+                               android:textStyle="bold"></TextView>
+
+                       </LinearLayout>
+                   </com.google.android.material.card.MaterialCardView>
+
+               </LinearLayout>
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="5dp"
+                   android:layout_marginEnd="5dp"
+                   android:layout_marginTop="1dp"
+                   android:orientation="horizontal">
+                   <com.google.android.material.card.MaterialCardView
+                       android:id="@+id/members"
+                       android:layout_width="0dp"
+                       android:layout_weight="1"
+                       android:layout_margin="5dp"
+                       android:layout_height="75dp"
+                       app:cardCornerRadius="5dp"
+                       android:elevation="5dp"
+                       app:cardBackgroundColor="@color/white">
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="10dp"
+                           android:orientation="vertical">
+                           <ImageView
+                               android:layout_width="30dp"
+                               android:layout_height="30dp"
+                               android:src="@drawable/members"
+                               android:scaleType="centerCrop"
+                               android:layout_gravity="center"
+                               app:strokeColor="@color/white"
+                               android:layout_centerHorizontal="true"></ImageView>
+
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="Members"
+                               android:textSize="8sp"
+                               android:layout_marginTop="3dp"
+                               android:layout_gravity="center"
+                               android:gravity="center"
+                               android:textStyle="bold"></TextView>
+
+                       </LinearLayout>
+                   </com.google.android.material.card.MaterialCardView>
+                   <com.google.android.material.card.MaterialCardView
+                       android:id="@+id/nearMe"
+                       android:layout_width="0dp"
+                       android:layout_weight="1"
+                       android:layout_margin="5dp"
+                       android:layout_height="75dp"
+                       app:cardCornerRadius="5dp"
+                       android:elevation="5dp"
+                       app:cardBackgroundColor="@color/white">
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="10dp"
+                           android:orientation="vertical">
+                           <ImageView
+                               android:layout_width="30dp"
+                               android:layout_height="30dp"
+                               android:src="@drawable/nearme"
+                               android:scaleType="centerCrop"
+                               android:layout_gravity="center"
+                               app:strokeColor="@color/white"
+                               android:layout_centerHorizontal="true"></ImageView>
+
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="Near me"
+                               android:textSize="8sp"
+                               android:layout_marginTop="3dp"
+                               android:layout_gravity="center"
+                               android:gravity="center"
+                               android:textStyle="bold"></TextView>
+
+                       </LinearLayout>
+                   </com.google.android.material.card.MaterialCardView>
+                   <com.google.android.material.card.MaterialCardView
+                       android:id="@+id/eventTickets"
+                       android:layout_width="0dp"
+                       android:layout_weight="1"
+                       android:layout_margin="5dp"
+                       android:layout_height="75dp"
+                       app:cardCornerRadius="5dp"
+                       android:elevation="5dp"
+                       app:cardBackgroundColor="@color/white">
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="10dp"
+                           android:orientation="vertical">
+                           <ImageView
+                               android:layout_width="30dp"
+                               android:layout_height="30dp"
+                               android:src="@drawable/eventtickets"
+                               android:scaleType="centerCrop"
+                               android:layout_gravity="center"
+                               app:strokeColor="@color/white"
+                               android:layout_centerHorizontal="true"></ImageView>
+
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="Event Tickets"
+                               android:textSize="8sp"
+                               android:layout_marginTop="3dp"
+                               android:layout_gravity="center"
+                               android:gravity="center"
+                               android:textStyle="bold"></TextView>
+
+                       </LinearLayout>
+                   </com.google.android.material.card.MaterialCardView>
+                   <com.google.android.material.card.MaterialCardView
+                       android:id="@+id/networkChat"
+                       android:layout_width="0dp"
+                       android:layout_weight="1"
+                       android:layout_margin="5dp"
+                       android:layout_height="75dp"
+                       app:cardCornerRadius="5dp"
+                       android:elevation="5dp"
+                       app:cardBackgroundColor="@color/white">
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="10dp"
+                           android:orientation="vertical">
+                           <ImageView
+                               android:layout_width="30dp"
+                               android:layout_height="30dp"
+                               android:src="@drawable/chat"
+                               android:scaleType="centerCrop"
+                               android:layout_gravity="center"
+                               app:strokeColor="@color/white"
+                               android:layout_centerHorizontal="true"></ImageView>
+
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="Network Chat"
+                               android:layout_marginTop="3dp"
+                               android:textSize="8sp"
+                               android:layout_gravity="center"
+                               android:gravity="center"
+                               android:textStyle="bold"></TextView>
+
+                       </LinearLayout>
+                   </com.google.android.material.card.MaterialCardView>
+
+
+               </LinearLayout>
+           </LinearLayout>
+            <HorizontalScrollView
+                android:id="@+id/ScrollView"
+                android:layout_width="match_parent"
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:scrollbars="none"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/Allposts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="All Posts"
+                        android:textStyle="bold|normal"
+                        android:padding="5dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/borderforoptions"></TextView>
+                    <TextView
+                        android:id="@+id/internships"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Internships"
+                        android:textStyle="bold|normal"
+                        android:padding="5dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/borderforoptions"></TextView>
+                    <TextView
+                        android:id="@+id/jobs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="Jobs"
+                        android:textStyle="bold|normal"
+                        android:padding="5dp"
+                        android:background="@drawable/borderforoptions"></TextView>
+                    <TextView
+                        android:id="@+id/Discussions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Discussions"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold|normal"
+                        android:padding="5dp"
+                        android:background="@drawable/borderforoptions"></TextView>
+                    <TextView
+                        android:id="@+id/Events"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Events"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold|normal"
+                        android:padding="5dp"
+                        android:background="@drawable/borderforoptions"></TextView>
+                    <TextView
+                        android:id="@+id/news"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="News"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold|normal"
+                        android:padding="5dp"
+                        android:background="@drawable/borderforoptions"></TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Announcements"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold|normal"
+                        android:padding="5dp"
+                        android:background="@drawable/borderforoptions"></TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Category"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold|normal"
+                        android:padding="5dp"
+                        android:background="@drawable/borderforoptions"></TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Group"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold|normal"
+                        android:padding="5dp"
+                        android:background="@drawable/borderforoptions"></TextView>
+
+
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:id="@+id/fragmentContainer"></FrameLayout>
+
+
+
+
+
+
+
+</LinearLayout>

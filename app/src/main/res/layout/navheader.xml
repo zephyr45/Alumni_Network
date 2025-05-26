@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="bottom"
+    android:layout_gravity="top"
+    android:background="@color/navcolor"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:orientation="vertical"
+    android:paddingBottom="16dp"
+    android:paddingTop="16dp"
+
+    >
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/profileimagefornavheader"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:shapeAppearanceOverlay="@style/CircularImageStyle"
+        android:layout_marginStart="20dp"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/profiledummy"></com.google.android.material.imageview.ShapeableImageView>
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="2dp"
+        android:padding="2dp"
+        android:visibility="visible"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:text="">
+    </TextView>
+    <TextView
+        android:id="@+id/userEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:padding="2dp"
+        android:visibility="visible"
+        android:textColor="@color/white"
+        android:layout_marginStart="20dp"
+        android:textSize="11sp"
+        android:text=""
+        >
+    </TextView>
+
+
+
+
+
+
+
+</LinearLayout>

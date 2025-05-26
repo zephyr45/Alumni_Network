@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".UserChats">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarUserChats"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#EDEBEB"
+        android:gravity="center"
+        app:titleTextColor="@color/white">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#EDEBEB"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/backbutton"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/baseline_arrow_back_24"
+                android:layout_gravity="center_vertical"
+                app:tint="@color/black">
+            </ImageView>
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/recipientprofileimage"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/profiledummy"
+                android:layout_gravity="center_vertical"
+                android:padding="5dp"
+                android:layout_marginStart="5dp"
+                app:shapeAppearanceOverlay="@style/CircularImageStyle"
+                android:scaleType="centerCrop"
+                ></com.google.android.material.imageview.ShapeableImageView>
+
+            <TextView
+                android:id="@+id/recipientName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gourav Agarwal"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:textSize="18sp"
+                android:letterSpacing=".05">
+            </TextView>
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerviewforchatting"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/messageInputLayoutForChatting"
+        android:layout_below="@id/toolbarUserChats"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:clipToPadding="false"
+        android:scrollbars="none"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp" />
+
+    <LinearLayout
+        android:id="@+id/messageInputLayoutForChatting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_gravity="center_vertical"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp"
+            android:elevation="0dp">
+
+            <EditText
+                android:id="@+id/chatmessageForUserChats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:maxHeight="100dp"
+                android:padding="8dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="Type a message.." />
+        </androidx.cardview.widget.CardView>
+
+
+
+
+        <ImageView
+            android:id="@+id/chatsendbuttonForUserChats"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/send_24"
+            android:layout_marginStart="5dp"
+            app:tint="@color/lavender" />
+
+
+</LinearLayout>
+
+</RelativeLayout>
